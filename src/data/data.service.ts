@@ -35,6 +35,7 @@ export class DataService {
       }else{
         recipeId = findRecipe.id;
       }
+      
 
       const findParamerSettings = await this.parameterSettingsService.findByParameterSetting(param);
       let parameterSettingId;
@@ -58,6 +59,7 @@ export class DataService {
       }
       const createdParameters = await this.parametersService.create({machineId, recipeId, parameterSettingId, sVal, bVal, fVal, timeStamp})
     }
+    return "Successfully created"
   }
 
   // findAll() {
