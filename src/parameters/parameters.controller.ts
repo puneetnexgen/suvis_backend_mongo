@@ -7,28 +7,28 @@ import { UpdateParameterDto } from './dto/update-parameter.dto';
 export class ParametersController {
   constructor(private readonly parametersService: ParametersService) {}
 
-  @Post()
-  create(@Body() createParameterDto: CreateParameterDto) {
-    return this.parametersService.create(createParameterDto);
-  }
+  // @Post()
+  // create(@Body() createParameterDto: CreateParameterDto) {
+  //   return this.parametersService.create(createParameterDto);
+  // }
 
-  @Get()
-  findAll() {
-    return this.parametersService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   return this.parametersService.findAll();
+  // }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.parametersService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.parametersService.findOne(+id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateParameterDto: UpdateParameterDto) {
-    return this.parametersService.update(+id, updateParameterDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateParameterDto: UpdateParameterDto) {
+  //   return this.parametersService.update(+id, updateParameterDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.parametersService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.parametersService.remove(+id);
+  // }
 }

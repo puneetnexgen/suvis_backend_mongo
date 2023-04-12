@@ -7,28 +7,28 @@ import { UpdateParameterSettingDto } from './dto/update-parameter_setting.dto';
 export class ParameterSettingsController {
   constructor(private readonly parameterSettingsService: ParameterSettingsService) {}
 
-  @Post()
-  create(@Body() createParameterSettingDto: CreateParameterSettingDto) {
-    return this.parameterSettingsService.create(createParameterSettingDto);
-  }
+  // @Post()
+  // create(@Body() createParameterSettingDto: CreateParameterSettingDto) {
+  //   return this.parameterSettingsService.create(createParameterSettingDto);
+  // }
 
-  @Get()
-  findAll() {
-    return this.parameterSettingsService.findAll();
-  }
+  // @Get()
+  // findAll() {
+  //   return this.parameterSettingsService.findAll();
+  // }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.parameterSettingsService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.parameterSettingsService.findOne(+id);
+  // }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateParameterSettingDto: UpdateParameterSettingDto) {
-    return this.parameterSettingsService.update(+id, updateParameterSettingDto);
-  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateParameterSettingDto: UpdateParameterSettingDto) {
+  //   return this.parameterSettingsService.update(+id, updateParameterSettingDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.parameterSettingsService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.parameterSettingsService.remove(+id);
+  // }
 }

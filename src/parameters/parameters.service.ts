@@ -1,11 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { CreateParameterDto } from './dto/create-parameter.dto';
 import { UpdateParameterDto } from './dto/update-parameter.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Parameter } from './schemas/parameters.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class ParametersService {
-  create(createParameterDto: CreateParameterDto) {
-    return 'This action adds a new parameter';
+
+  constructor(@InjectModel("Parameter") private parametersModel: Model<Parameter>){}
+
+  async create(createParameterDto: CreateParameterDto) {
+    const lastUser = await this.parametersModel.findOne().sort({id:-1}).exec();
+    const nextId = lastUser ? lastUser.id + 1 : 1;
+    const newParameters = new this.parametersModel({id:nextId, ...createParameterDto})
+    return await newParameters.save()
   }
 
   findAll() {

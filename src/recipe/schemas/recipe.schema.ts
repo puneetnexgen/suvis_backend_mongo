@@ -6,10 +6,17 @@ export type RecipeDocument = HydratedDocument<Recipe>
 @Schema()
 export class Recipe {
 
+   @Prop({unique:true, required:true, type:Number})
+   id:number;
+
    @Prop()
-   machineId: string;
+   machineId: number;
 
    @Prop()
    recipeName: string;
+
+   set nextId(value: number) {
+      this.id = value;
+    }
 }
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

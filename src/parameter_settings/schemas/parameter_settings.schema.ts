@@ -2,13 +2,23 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 import { HydratedDocument } from "mongoose";
 
+export enum TypeEnum {
+ boolean = 0,
+ number = 1,
+ string = 2
+}
+
+
 export type ParameterSettingsDocument = HydratedDocument<ParameterSetting>
 
 @Schema()
 export class ParameterSetting {
 
+   @Prop({required:true, unique:true, type:Number})
+   id:number;
+
    @Prop()
-   machineId: string;
+   machineId: number;
 
    @Prop()
    param: string;
@@ -19,4 +29,4 @@ export class ParameterSetting {
    @Prop()
    timeStamp: string;
 }
-export const MachineSchema = SchemaFactory.createForClass(ParameterSetting);
+export const ParameterSettingsSchema = SchemaFactory.createForClass(ParameterSetting);
