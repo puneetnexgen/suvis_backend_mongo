@@ -1,5 +1,4 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { TypeEnum } from "../schemas/parameter_settings.schema";
 
 export class CreateParameterSettingDto {
   

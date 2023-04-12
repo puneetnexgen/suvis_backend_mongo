@@ -1,7 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { TypeEnum } from "src/parameter_settings/schemas/parameter_settings.schema";
 
-export class CreateMainDto {
+export class CreateDatumDto {
 
   @ApiProperty({example:"Suvi"})
   readonly machineToken: string;
@@ -21,4 +20,9 @@ export class CreateMainDto {
   @ApiProperty({example:"3-21-2018T11:14:23.11"})
   readonly timeStamp: string;
 
+}
+
+export class CreateDatumArrayDto{
+  @ApiProperty({ type: [CreateDatumDto] }) // Use 'type' option to specify array type
+  createDatumDto: CreateDatumDto[];
 }

@@ -3,30 +3,29 @@ import { CreateMachineDto } from './dto/create-machine.dto';
 import { MachineService } from './machine.service';
 import { UpdateMachineDto } from './dto/update-machine.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger/dist';
-import { CreateMainDto } from './dto/main.dto';
 
 @Controller('machine')
 @ApiTags("Machine")
 export class MachineController {
    constructor(private readonly machineService: MachineService) { }
 
-   @Post()
-   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
-   @ApiResponse({ status: 400, description: 'Bad Request' })
-   async createMachine(@Res() response, @Body() createMainDto: CreateMainDto[]) {
-    try {
-      const newMachine = await this.machineService.createMachine(createMainDto);
-      return response.status(HttpStatus.CREATED).json({
-        message: 'Machine has been created successfully',
-        newMachine});
-    } catch (err) {
-      return response.status(HttpStatus.BAD_REQUEST).json({
-        statusCode: 400,
-        message: 'Error: Machine not created!',
-        error: 'Bad Request'
-      });
-    }
-  }
+  //  @Post()
+  //  @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+  //  @ApiResponse({ status: 400, description: 'Bad Request' })
+  //  async createMachine(@Res() response, @Body() createMachineDto: CreateMachineDto) {
+  //   try {
+  //     const newMachine = await this.machineService.createMachine(createMachineDto);
+  //     return response.status(HttpStatus.CREATED).json({
+  //       message: 'Machine has been created successfully',
+  //       newMachine});
+  //   } catch (err) {
+  //     return response.status(HttpStatus.BAD_REQUEST).json({
+  //       statusCode: 400,
+  //       message: 'Error: Machine not created!',
+  //       error: 'Bad Request'
+  //     });
+  //   }
+  // }
 
   // @Put('/:id')
   // @ApiResponse({ status: 201, description: 'The record has been successfully updated.'})

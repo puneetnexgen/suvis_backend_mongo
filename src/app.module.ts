@@ -7,10 +7,11 @@ import { MachineSchema } from './machine/schemas/machine.schema';
 import { RecipeModule } from './recipe/recipe.module';
 import { ParameterSettingsModule } from './parameter_settings/parameter_settings.module';
 import { ParametersModule } from './parameters/parameters.module';
+import { DataModule } from './data/data.module';
 
 @Module({
   imports: [MachineModule, 
-    MongooseModule.forRoot('mongodb://0.0.0.0:27017',{dbName:'suvi'}), RecipeModule, ParameterSettingsModule, ParametersModule],
+    MongooseModule.forRoot('mongodb://0.0.0.0:27017',{dbName:'suvi'}), RecipeModule, ParameterSettingsModule, ParametersModule, DataModule],
   controllers: [AppController],
   providers: [AppService],
 })

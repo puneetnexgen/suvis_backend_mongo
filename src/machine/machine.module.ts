@@ -8,9 +8,9 @@ import { ParametersModule } from 'src/parameters/parameters.module';
 import { ParameterSettingsModule } from 'src/parameter_settings/parameter_settings.module';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Machine.name, schema: MachineSchema }]),
-  RecipeModule, ParametersModule, ParameterSettingsModule],
+  imports: [MongooseModule.forFeature([{ name: Machine.name, schema: MachineSchema }])],
   controllers: [MachineController],
-  providers: [MachineService]
+  providers: [MachineService],
+  exports: [MachineService]
 })
 export class MachineModule {}

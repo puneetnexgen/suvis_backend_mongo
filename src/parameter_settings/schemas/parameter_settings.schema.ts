@@ -2,13 +2,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 import { HydratedDocument } from "mongoose";
 
-export enum TypeEnum {
- boolean = 0,
- number = 1,
- string = 2
-}
-
-
 export type ParameterSettingsDocument = HydratedDocument<ParameterSetting>
 
 @Schema()
