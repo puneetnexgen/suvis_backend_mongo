@@ -15,24 +15,12 @@ export class ParametersService {
     return await newParameters.save()
   }
 
-  
-  async findByRecipeId(recipeId:number){
-    return this.parametersModel.find({recipeId})
+   async findById(id: string) {
+    return await this.parametersModel.aggregate([{ $unwind: '$values' }])
   }
 
-  findAll() {
-    return `This action returns all parameters`;
+  async findByRecipeId(recipeId:string){
+    return await this.parametersModel.find({recipeId})
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} parameter`;
-  }
-
-  update(id: number, updateParameterDto: UpdateParameterDto) {
-    return `This action updates a #${id} parameter`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} parameter`;
-  }
 }

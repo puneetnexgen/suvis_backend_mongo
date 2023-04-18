@@ -3,20 +3,13 @@ import { HydratedDocument } from "mongoose";
 
 export type RecipeDocument = HydratedDocument<Recipe>
 
-@Schema()
+@Schema({timestamps:true})
 export class Recipe {
-
-   // @Prop({unique:true, required:true, type:Number})
-   // id:number;
 
    @Prop()
    machineId: string;
 
    @Prop()
    recipeName: string;
-
-   // set nextId(value: number) {
-   //    this.id = value;
-   //  }
 }
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

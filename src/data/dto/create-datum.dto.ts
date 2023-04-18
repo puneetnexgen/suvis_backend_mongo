@@ -21,21 +21,13 @@ export class CreateDatumDto {
   @ApiProperty({example:"Coffee"})
   readonly recipeName: string;
 
-  // @ApiProperty({example:"Milk"})
-  // readonly param: string;
-
-  // @ApiProperty({example:"0"})
-  // readonly type: string;
 
   @ApiProperty({type:[NestedObject]})
   readonly values: NestedObject[];
 
-  // @ApiProperty({example:"3-21-2018T11:14:23.11"})
-  // readonly timeStamp: string;
-
 }
 
 export class CreateDatumArrayDto{
-  @ApiProperty({ type: [CreateDatumDto] }) // Use 'type' option to specify array type
+  @ApiProperty({ type: [CreateDatumDto] })
   createDatumDto: CreateDatumDto[];
 }

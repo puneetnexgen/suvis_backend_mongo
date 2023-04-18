@@ -9,28 +9,28 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger/dist';
 export class MachineController {
    constructor(private readonly machineService: MachineService) { }
 
-  //  @Post()
-  //  @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
-  //  @ApiResponse({ status: 400, description: 'Bad Request' })
-  //  async createMachine(@Res() response, @Body() createMachineDto: CreateMachineDto) {
-  //   try {
-  //     const newMachine = await this.machineService.createMachine(createMachineDto);
-  //     return response.status(HttpStatus.CREATED).json({
-  //       message: 'Machine has been created successfully',
-  //       newMachine});
-  //   } catch (err) {
-  //     return response.status(HttpStatus.BAD_REQUEST).json({
-  //       statusCode: 400,
-  //       message: 'Error: Machine not created!',
-  //       error: 'Bad Request'
-  //     });
-  //   }
-  // }
+   @Post()
+   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+   @ApiResponse({ status: 400, description: 'Bad Request' })
+   async createMachine(@Res() response, @Body() createMachineDto: CreateMachineDto) {
+    try {
+      const newMachine = await this.machineService.createMachine(createMachineDto);
+      return response.status(HttpStatus.CREATED).json({
+        message: 'Machine has been created successfully',
+        newMachine});
+    } catch (err) {
+      return response.status(HttpStatus.BAD_REQUEST).json({
+        statusCode: 400,
+        message: 'Error: Machine not created!',
+        error: 'Bad Request'
+      });
+    }
+  }
 
   @Patch('/:id')
   @ApiResponse({ status: 201, description: 'The record has been successfully updated.'})
   @ApiResponse({ status: 400, description: 'Bad Request' })
-  async updateMachine(@Res() response, @Param('id', ParseIntPipe) machineId: number, @Body() updateMachineDto: UpdateMachineDto) {
+  async updateMachine(@Res() response, @Param('id') machineId: string, @Body() updateMachineDto: UpdateMachineDto) {
     try {
       const existingMachine = await this.machineService.updateMachine(machineId, updateMachineDto);
       return response.status(HttpStatus.OK).json({

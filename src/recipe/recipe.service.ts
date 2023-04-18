@@ -16,8 +16,6 @@ export class RecipeService {
 
 
   async create(createRecipeDto: CreateRecipeDto) {
-    // const lastUser =await this.recipeModel.findOne().sort({ id: -1 }).exec();
-    // const nextId = lastUser ? lastUser.id + 1 : 1;
     const newRecipe = new this.recipeModel({...createRecipeDto});
     const created =await newRecipe.save()
     return created;
@@ -27,21 +25,22 @@ export class RecipeService {
     return this.recipeModel.find().exec();
   }
 
-  async findOneByMachineToken(machineToken: string) {
+  async findByMachineToken(machineToken: string) {
     const findMachineDataByMachineToken = await this.machineService.findByMachineToken(machineToken);
     const findRecipeByMachineToken = await this.recipeModel.find({machineId:findMachineDataByMachineToken.id}).exec();
     return findRecipeByMachineToken;
+  }
+
+  findById(id: string) {
+    return this.recipeModel.findById(id).exec();
   }
 
   findByRecipe(recipeName:any){
     return this.recipeModel.findOne({recipeName})
   }
 
-  async update(id: number, updateRecipeDto: UpdateRecipeDto) {
-    return await this.recipeModel.findOneAndUpdate({id}, updateRecipeDto, {new:true}).exec();
+  async update(id: string, updateRecipeDto: UpdateRecipeDto) {
+    return await this.recipeModel.findByIdAndUpdate(id, updateRecipeDto, {new:true}).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} recipe`;
-  }
 }

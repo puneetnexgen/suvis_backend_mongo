@@ -5,16 +5,27 @@ import { HydratedDocument, SchemaTypes } from "mongoose";
 export type ParameterDocument = HydratedDocument<Parameter>
 
 
-interface NestedSchema {
+// interface NestedSchema {
 
-   paramName: string;
+//    paramName: string;
 
-   value: any;
+//    value: any;
 
-   timeStamp: string;
+//    timeStamp: string;
+// }
+@Schema()
+export class Value {
+  @Prop()
+  paramName: string;
+
+  @Prop()
+  value: string;
+
+  @Prop()
+  timeStamp: string;
 }
 
-@Schema()
+@Schema({timestamps:true})
 export class Parameter {
 
    @Prop()
@@ -24,7 +35,7 @@ export class Parameter {
    recipeId: string;
 
    @Prop({ type: [{ paramName: String, value: SchemaTypes.Mixed, timeStamp: String} ], required: true })
-   values: NestedSchema[];
+   values: Value[];
    
 }
 export const ParametersSchema = SchemaFactory.createForClass(Parameter);

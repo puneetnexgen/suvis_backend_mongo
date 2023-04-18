@@ -27,8 +27,9 @@ export class MachineService {
   }
 
 
-  async updateMachine(id: number, updateMachineDto: UpdateMachineDto): Promise<Imachine> {
-    const existingMachine =await this.machineModel.findOneAndUpdate({id}, updateMachineDto, { new: true });
+  async updateMachine(id: string, updateMachineDto: UpdateMachineDto): Promise<Imachine> {
+    console.log(id)
+    const existingMachine =await this.machineModel.findByIdAndUpdate(id, updateMachineDto, { new: true }).exec();
     if (!existingMachine) {
       throw new NotFoundException(`machine #${id} not found`);
     }

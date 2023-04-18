@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateDatumArrayDto, CreateDatumDto } from './dto/create-datum.dto';
 import { UpdateDatumDto } from './dto/update-datum.dto';
 import { RecipeService } from "src/recipe/recipe.service";
@@ -19,17 +19,15 @@ export class DataService {
   
       
       let findMachine = await this.machineService.findByMachineToken(machineToken);
-      let machineId;
       if (!findMachine){
-        const createdMachine = await this.machineService.createMachine({machineToken})
-        machineId = createdMachine.id;
-      }else{
-        machineId = findMachine.id
+        throw new NotFoundException("Enter a Valid Machine Token")
       }
+      let machineId = findMachine.id
+      
 
 
       const findRecipe =  await this.recipeService.findByRecipe(recipeName);
-      let recipeId;
+      let recipeId:string;
       if(!findRecipe){
         const createdRecipe = await this.recipeService.create({machineId, recipeName});
         recipeId = createdRecipe.id;

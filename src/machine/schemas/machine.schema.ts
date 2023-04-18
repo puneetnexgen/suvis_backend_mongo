@@ -6,11 +6,11 @@ import { Recipe } from "src/recipe/schemas/recipe.schema";
 
 export type MachineDocument = HydratedDocument<Machine>
 
-@Schema()
+@Schema({timestamps:true})
 export class Machine {
  
-   @Prop()
-   machineToken: string;
+   @Prop({unique:true, default:"suvi"})
+   machineToken?: string;
 
    @Prop({default:""})
    customerName: string;
