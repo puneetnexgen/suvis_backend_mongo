@@ -27,7 +27,7 @@ export class CreateDatumDto {
   // @ApiProperty({example:"0"})
   // readonly type: string;
 
-  @ApiProperty({example:"242"})
+  @ApiProperty({type:[NestedObject]})
   readonly values: NestedObject[];
 
   // @ApiProperty({example:"3-21-2018T11:14:23.11"})
