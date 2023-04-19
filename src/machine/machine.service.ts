@@ -38,4 +38,17 @@ export class MachineService {
   findByMachineToken(machineToken: any){
     return this.machineModel.findOne({machineToken});
   }
+<<<<<<< HEAD
+=======
+
+
+
+  // async getMachine(machineId: string): Promise<Imachine> {
+  //   const existingMachine = await this.machineModel.findById(machineId).exec();
+  //   if (!existingMachine) {
+  //    throw new NotFoundException(`machine #${machineId} not found`);
+  //   }
+  //   return existingMachine;
+  // }
+>>>>>>> fbe0bb062ad8906d3d98b1a9b08ff0f297e41e89
 }
