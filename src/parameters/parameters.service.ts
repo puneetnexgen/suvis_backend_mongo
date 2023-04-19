@@ -16,11 +16,17 @@ export class ParametersService {
   }
 
    async findById(id: string) {
-    return await this.parametersModel.aggregate([{ $unwind: '$values' }])
+
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      const paramData =  await this.parametersModel.findOne({"values._id": id},{"values.$":1})
+      return paramData.values[0]
+  }
+
+    return null;
+
   }
 
   async findByRecipeId(recipeId:string){
     return await this.parametersModel.find({recipeId})
   }
-
 }

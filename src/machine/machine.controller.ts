@@ -54,17 +54,4 @@ export class MachineController {
     }
   }
   
-  // @Get('/:id')
-  // @ApiResponse({ status: 200, description: 'The record has been successfully fetched.'})
-  // @ApiResponse({ status: 400, description: 'Bad Request' })
-  // async getMachine(@Res() response, @Param('id') machineId: string) {
-  //   try {
-  //     const existingMachine = await
-  //     this.machineService.getMachine(machineId);
-  //     return response.status(HttpStatus.OK).json({
-  //       message: 'Machine found successfully',existingMachine,});
-  //   } catch (err) {
-  //     return response.status(err.status).json(err.response);
-  //   }
-  // }
 }

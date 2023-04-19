@@ -23,7 +23,6 @@ export class DashboardParamService {
     const findDashboard = await this.dashboardService.findById(createDashboardParamDto.dashboardId)
     const findRecipe = await this.recipeService.findById(createDashboardParamDto.recipeId)
     const findParameters =await this.parametersService.findById(createDashboardParamDto.paramId)
-    console.log(findDashboard, findRecipe, findParameters)
 
     if(!findDashboard || !findRecipe || !findParameters){
       throw new NotFoundException("Please enter a valid Id")
@@ -33,13 +32,21 @@ export class DashboardParamService {
   }
 
   async findDashParamData(dashIdArray:string[]){
+    let arr = []
     for (let i in dashIdArray){
-      const findDashParam = await this.dashboardParamModel.findById(dashIdArray[0])
-      const findDashboardData = await this.dashboardService.findById(findDashParam.dashboardId)
-      const findRecipeData = await this.recipeService.findById(findDashParam.recipeId)
-      const findParametersData = await this.parametersService.findById(findDashParam.paramId)
-      return {findDashParam, findDashboardData,findRecipeData, findParametersData}
+      const findDashParam = await this.dashboardParamModel.find({dashboardId:dashIdArray[i]})
+      if(!findDashParam.length){
+        throw new NotFoundException(`Id ${dashIdArray[i]} is not a valid dashboard Id`)
+      }
+
+      const findDashboard = await this.dashboardService.findById(dashIdArray[i])
+      for (let i in findDashParam){
+        const findRecipeData = await this.recipeService.findById(findDashParam[i].recipeId)
+        const findParametersData = await this.parametersService.findById(findDashParam[i].paramId)
+        arr.push({dash_data:findDashboard, recipe_data: findRecipeData, param_data:findParametersData })
+      }
     }
+    return arr;
   
 }
 }

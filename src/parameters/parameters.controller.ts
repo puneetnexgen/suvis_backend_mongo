@@ -13,4 +13,5 @@ export class ParametersController {
   findOne(@Param('id') id:string) {
     return this.parametersService.findByRecipeId(id);
   }
+
 }

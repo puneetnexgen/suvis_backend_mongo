@@ -1,6 +1,6 @@
 
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
-import { HydratedDocument, SchemaTypes } from "mongoose";
+import { Document, HydratedDocument, SchemaTypes } from "mongoose";
 
 export type ParameterDocument = HydratedDocument<Parameter>
 
@@ -26,7 +26,7 @@ export class Value {
 }
 
 @Schema({timestamps:true})
-export class Parameter {
+export class Parameter extends Document {
 
    @Prop()
    machineId: string;

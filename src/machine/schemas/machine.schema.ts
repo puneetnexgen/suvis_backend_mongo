@@ -9,8 +9,8 @@ export type MachineDocument = HydratedDocument<Machine>
 @Schema({timestamps:true})
 export class Machine {
  
-   @Prop({unique:true, default:"suvi"})
-   machineToken?: string;
+   @Prop({unique:true, default:"Suvi"})
+   machineToken: string;
 
    @Prop({default:""})
    customerName: string;

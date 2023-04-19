@@ -38,6 +38,6 @@ export class DataService {
 
       const createdParameters = await this.parametersService.create({machineId, recipeId, values})
       }
-    return "Successfully created"
+    return "Data Inserted"
   }
 }
