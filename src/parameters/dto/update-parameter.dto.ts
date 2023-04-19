@@ -1,4 +1,18 @@
-import { PartialType } from '@nestjs/swagger';
+import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { CreateParameterDto } from './create-parameter.dto';
 
-export class UpdateParameterDto extends PartialType(CreateParameterDto) {}
+class NestedObject{
+
+    @ApiProperty({example:"Milk"})
+    paramName: string;
+  
+    @ApiProperty({example:"Sumkmcdvi"})
+    value: any;
+  
+  }
+
+export class UpdateParameterDto {
+  
+    @ApiProperty({type:[NestedObject]})
+    readonly values: NestedObject[];
+}

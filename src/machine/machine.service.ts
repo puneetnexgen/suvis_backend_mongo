@@ -38,9 +38,9 @@ export class MachineService {
   
   
   findByMachineToken(machineToken: any){
-    console.log(machineToken)
     return this.machineModel.findOne({machineToken});
   }
+
 
 
   // async getMachine(machineId: string): Promise<Imachine> {
